@@ -54,10 +54,10 @@ namespace ObjectLibrary.BusinessObjects
                     // initial value
                     string name = Name;
 
-                    if (Name.Length >= 16)
+                    if (Name.Length >= 17)
                     {
                         // return a shortName
-                        name = Name.Substring(0, 16);
+                        name = Name.Substring(0, 17);
                     }
 
                     // return the name

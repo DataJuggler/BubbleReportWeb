@@ -133,7 +133,7 @@ namespace BubbleReportWeb.Pages
                 // Load the Gateway
                 Gateway gateway = new Gateway(Connection.Name);
                 
-                // Load the topStocks
+                // Load the losingIndustries
                 List<IndustryLosingStreakView> losingIndustries = gateway.LoadIndustryLosingStreakViews();
 
                 // If the losingIndustries collection exists and has one or more items
