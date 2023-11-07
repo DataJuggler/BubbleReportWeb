@@ -22,7 +22,7 @@ To run this project will you need to follow these instructions
 4. Create a connection string for StockData database. Tip: DataTier.Net comes with a Connection Builder program located in the Tools folder
    https://github.com/DataJuggler/DataTier.Net
 5. Create a System Environment variable called BubbleReportConnString and paste in the connection string created in Step 4.
-6. Run the project and you see several grids.
+6. Run the project and you should see 5 or 6 grids.
 
 I am making a video now for this project.
 
