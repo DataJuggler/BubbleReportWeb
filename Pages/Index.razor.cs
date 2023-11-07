@@ -34,8 +34,7 @@ namespace BubbleReportWeb.Pages
         private Grid topStreakGrid;
         private Grid marketSummaryGrid;
         private Grid topIndustryStreakGrid;
-        private Grid losingIndustryGrid;
-        private Grid sectorGrid;
+        private Grid losingIndustryGrid;        
         #endregion
 
         #region Events
@@ -914,12 +913,7 @@ namespace BubbleReportWeb.Pages
                     {
                         // store the grid
                         LosingIndustryGrid = component as Grid;
-                    }
-                    else if(TextHelper.IsEqual(component.Name, "SectorGrid"))
-                    {
-                        // store the grid
-                        SectorGrid = component as Grid;
-                    }
+                    }                    
                 }
             }
             #endregion
@@ -965,23 +959,6 @@ namespace BubbleReportWeb.Pages
                     
                     // return value
                     return hasMarketSummaryGrid;
-                }
-            }
-            #endregion
-            
-            #region HasSectorGrid
-            /// <summary>
-            /// This property returns true if this object has a 'SectorGrid'.
-            /// </summary>
-            public bool HasSectorGrid
-            {
-                get
-                {
-                    // initial value
-                    bool hasSectorGrid = (this.SectorGrid != null);
-                    
-                    // return value
-                    return hasSectorGrid;
                 }
             }
             #endregion
@@ -1056,17 +1033,6 @@ namespace BubbleReportWeb.Pages
             {
                 get { return marketSummaryGrid; }
                 set { marketSummaryGrid = value; }
-            }
-            #endregion
-            
-            #region SectorGrid
-            /// <summary>
-            /// This property gets or sets the value for 'SectorGrid'.
-            /// </summary>
-            public Grid SectorGrid
-            {
-                get { return sectorGrid; }
-                set { sectorGrid = value; }
             }
             #endregion
             
