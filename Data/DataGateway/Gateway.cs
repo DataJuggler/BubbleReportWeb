@@ -196,6 +196,43 @@ namespace DataGateway
             }
             #endregion
         
+            #region DeleteSector(int id, Sector tempSector = null)
+            /// <summary>
+            /// This method is used to delete Sector objects.
+            /// </summary>
+            /// <param name="id">Delete the Sector with this id</param>
+            /// <param name="tempSector">Pass in a tempSector to perform a custom delete.</param>
+            public bool DeleteSector(int id, Sector tempSector = null)
+            {
+                // initial value
+                bool deleted = false;
+        
+                // if the AppController exists
+                if (this.HasAppController)
+                {
+                    // if the tempSector does not exist
+                    if (tempSector == null)
+                    {
+                        // create a temp Sector
+                        tempSector = new Sector();
+                    }
+        
+                    // if the id is set
+                    if (id > 0)
+                    {
+                        // set the primary key
+                        tempSector.UpdateIdentity(id);
+                    }
+        
+                    // perform the delete
+                    deleted = this.AppController.ControllerManager.SectorController.Delete(tempSector);
+                }
+        
+                // return value
+                return deleted;
+            }
+            #endregion
+        
             #region ExecuteNonQuery(string procedureName, SqlParameter[] sqlParameters)
             /// <summary>
             /// This method Executes a Non Query StoredProcedure
@@ -387,6 +424,43 @@ namespace DataGateway
 
                 // return value
                 return industry;
+            }
+            #endregion
+
+            #region FindSector(int id, Sector tempSector = null)
+            /// <summary>
+            /// This method is used to find 'Sector' objects.
+            /// </summary>
+            /// <param name="id">Find the Sector with this id</param>
+            /// <param name="tempSector">Pass in a tempSector to perform a custom find.</param>
+            public Sector FindSector(int id, Sector tempSector = null)
+            {
+                // initial value
+                Sector sector = null;
+
+                // if the AppController exists
+                if (this.HasAppController)
+                {
+                    // if the tempSector does not exist
+                    if (tempSector == null)
+                    {
+                        // create a temp Sector
+                        tempSector = new Sector();
+                    }
+
+                    // if the id is set
+                    if (id > 0)
+                    {
+                        // set the primary key
+                        tempSector.UpdateIdentity(id);
+                    }
+
+                    // perform the find
+                    sector = this.AppController.ControllerManager.SectorController.Find(tempSector);
+                }
+
+                // return value
+                return sector;
             }
             #endregion
 
@@ -639,6 +713,27 @@ namespace DataGateway
             }
             #endregion
 
+            #region LoadSectors(Sector tempSector = null)
+            /// <summary>
+            /// This method loads a collection of 'Sector' objects.
+            /// </summary>
+            public List<Sector> LoadSectors(Sector tempSector = null)
+            {
+                // initial value
+                List<Sector> sectors = null;
+
+                // if the AppController exists
+                if (this.HasAppController)
+                {
+                    // perform the load
+                    sectors = this.AppController.ControllerManager.SectorController.FetchAll(tempSector);
+                }
+
+                // return value
+                return sectors;
+            }
+            #endregion
+
             #region LoadSectorSummarys(SectorSummary tempSectorSummary = null)
             /// <summary>
             /// This method loads a collection of 'SectorSummary' objects.
@@ -783,6 +878,28 @@ namespace DataGateway
                 {
                     // perform the save
                     saved = this.AppController.ControllerManager.IndustryController.Save(ref industry);
+                }
+
+                // return value
+                return saved;
+            }
+            #endregion
+
+            #region SaveSector(ref Sector sector)
+            /// <summary>
+            /// This method is used to save 'Sector' objects.
+            /// </summary>
+            /// <param name="sector">The Sector to save.</param>
+            public bool SaveSector(ref Sector sector)
+            {
+                // initial value
+                bool saved = false;
+
+                // if the AppController exists
+                if (this.HasAppController)
+                {
+                    // perform the save
+                    saved = this.AppController.ControllerManager.SectorController.Save(ref sector);
                 }
 
                 // return value

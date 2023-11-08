@@ -534,6 +534,27 @@ namespace DataGateway
             }
             #endregion
 
+            #region LoadIndustryLosingStreakViews(IndustryLosingStreakView tempIndustryLosingStreakView = null)
+            /// <summary>
+            /// This method loads a collection of 'IndustryLosingStreakView' objects.
+            /// </summary>
+            public List<IndustryLosingStreakView> LoadIndustryLosingStreakViews(IndustryLosingStreakView tempIndustryLosingStreakView = null)
+            {
+                // initial value
+                List<IndustryLosingStreakView> industryLosingStreakViews = null;
+
+                // if the AppController exists
+                if (this.HasAppController)
+                {
+                    // perform the load
+                    industryLosingStreakViews = this.AppController.ControllerManager.IndustryLosingStreakViewController.FetchAll(tempIndustryLosingStreakView);
+                }
+
+                // return value
+                return industryLosingStreakViews;
+            }
+            #endregion
+
             #region LoadIndustrys(Industry tempIndustry = null)
             /// <summary>
             /// This method loads a collection of 'Industry' objects.
@@ -573,6 +594,27 @@ namespace DataGateway
 
                 // return value
                 return industrySummarys;
+            }
+            #endregion
+
+            #region LoadIndustryWinningStreakViews(IndustryWinningStreakView tempIndustryWinningStreakView = null)
+            /// <summary>
+            /// This method loads a collection of 'IndustryWinningStreakView' objects.
+            /// </summary>
+            public List<IndustryWinningStreakView> LoadIndustryWinningStreakViews(IndustryWinningStreakView tempIndustryWinningStreakView = null)
+            {
+                // initial value
+                List<IndustryWinningStreakView> industryWinningStreakViews = null;
+
+                // if the AppController exists
+                if (this.HasAppController)
+                {
+                    // perform the load
+                    industryWinningStreakViews = this.AppController.ControllerManager.IndustryWinningStreakViewController.FetchAll(tempIndustryWinningStreakView);
+                }
+
+                // return value
+                return industryWinningStreakViews;
             }
             #endregion
 

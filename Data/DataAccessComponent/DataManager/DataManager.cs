@@ -37,6 +37,7 @@ namespace DataAccessComponent.DataManager
         private IndustrySummaryManager industrysummaryManager;
         private IndustryWinningStreakViewManager industrywinningstreakviewManager;
         private MarketSummaryManager marketsummaryManager;
+        private SectorManager sectorManager;
         private SectorSummaryManager sectorsummaryManager;
         private TopLosingStreakStocksManager toplosingstreakstocksManager;
         private TopStreakStocksManager topstreakstocksManager;
@@ -78,6 +79,7 @@ namespace DataAccessComponent.DataManager
                 this.IndustrySummaryManager = new IndustrySummaryManager(this);
                 this.IndustryWinningStreakViewManager = new IndustryWinningStreakViewManager(this);
                 this.MarketSummaryManager = new MarketSummaryManager(this);
+                this.SectorManager = new SectorManager(this);
                 this.SectorSummaryManager = new SectorSummaryManager(this);
                 this.TopLosingStreakStocksManager = new TopLosingStreakStocksManager(this);
                 this.TopStreakStocksManager = new TopStreakStocksManager(this);
@@ -173,6 +175,14 @@ namespace DataAccessComponent.DataManager
             {
                 get { return marketsummaryManager; }
                 set { marketsummaryManager = value; }
+            }
+            #endregion
+
+            #region SectorManager
+            public SectorManager SectorManager
+            {
+                get { return sectorManager; }
+                set { sectorManager = value; }
             }
             #endregion
 

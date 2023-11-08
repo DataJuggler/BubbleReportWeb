@@ -34,6 +34,7 @@ namespace ApplicationLogicComponent.Controllers
         private IndustrySummaryController industrysummaryController;
         private IndustryWinningStreakViewController industrywinningstreakviewController;
         private MarketSummaryController marketsummaryController;
+        private SectorController sectorController;
         private SectorSummaryController sectorsummaryController;
         private TopLosingStreakStocksController toplosingstreakstocksController;
         private TopStreakStocksController topstreakstocksController;
@@ -72,6 +73,7 @@ namespace ApplicationLogicComponent.Controllers
                 this.IndustrySummaryController = new IndustrySummaryController(this.ErrorProcessor, this.AppController);
                 this.IndustryWinningStreakViewController = new IndustryWinningStreakViewController(this.ErrorProcessor, this.AppController);
                 this.MarketSummaryController = new MarketSummaryController(this.ErrorProcessor, this.AppController);
+                this.SectorController = new SectorController(this.ErrorProcessor, this.AppController);
                 this.SectorSummaryController = new SectorSummaryController(this.ErrorProcessor, this.AppController);
                 this.TopLosingStreakStocksController = new TopLosingStreakStocksController(this.ErrorProcessor, this.AppController);
                 this.TopStreakStocksController = new TopStreakStocksController(this.ErrorProcessor, this.AppController);
@@ -167,6 +169,14 @@ namespace ApplicationLogicComponent.Controllers
             {
                 get { return marketsummaryController; }
                 set { marketsummaryController = value; }
+            }
+            #endregion
+
+            #region SectorController
+            public SectorController SectorController
+            {
+                get { return sectorController; }
+                set { sectorController = value; }
             }
             #endregion
 

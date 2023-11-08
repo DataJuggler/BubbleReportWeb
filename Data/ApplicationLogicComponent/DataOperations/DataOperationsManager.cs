@@ -38,6 +38,7 @@ namespace ApplicationLogicComponent.DataOperations
         private IndustrySummaryMethods industrysummaryMethods;
         private IndustryWinningStreakViewMethods industrywinningstreakviewMethods;
         private MarketSummaryMethods marketsummaryMethods;
+        private SectorMethods sectorMethods;
         private SectorSummaryMethods sectorsummaryMethods;
         private TopLosingStreakStocksMethods toplosingstreakstocksMethods;
         private TopStreakStocksMethods topstreakstocksMethods;
@@ -76,6 +77,7 @@ namespace ApplicationLogicComponent.DataOperations
                 this.IndustrySummaryMethods = new IndustrySummaryMethods(this.DataManager);
                 this.IndustryWinningStreakViewMethods = new IndustryWinningStreakViewMethods(this.DataManager);
                 this.MarketSummaryMethods = new MarketSummaryMethods(this.DataManager);
+                this.SectorMethods = new SectorMethods(this.DataManager);
                 this.SectorSummaryMethods = new SectorSummaryMethods(this.DataManager);
                 this.TopLosingStreakStocksMethods = new TopLosingStreakStocksMethods(this.DataManager);
                 this.TopStreakStocksMethods = new TopStreakStocksMethods(this.DataManager);
@@ -171,6 +173,14 @@ namespace ApplicationLogicComponent.DataOperations
             {
                 get { return marketsummaryMethods; }
                 set { marketsummaryMethods = value; }
+            }
+            #endregion
+
+            #region SectorMethods
+            public SectorMethods SectorMethods
+            {
+                get { return sectorMethods; }
+                set { sectorMethods = value; }
             }
             #endregion
 
