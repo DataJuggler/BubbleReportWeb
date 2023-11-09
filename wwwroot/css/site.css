@@ -40,17 +40,31 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;    
     line-height: 1.52vh;   
 }
+.gridwide2
+{
+    background-image: url('../images/BlackOnGold.jpg');
+    background-repeat: no-repeat;
+    background-color: darkgray;
+    background-size: 348px 310px;
+    width: 348px;
+    max-width: 348px;
+    height: 310px; 
+    max-height: 310px;    
+    overflow: hidden;    
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;    
+    line-height: 1vh;   
+}
 .maincolumn1
 {
     position: absolute;
-    top: 4vh;
+    top: 2vh;
     left: 1%;    
     width: 20%;   
 }
 .maincolumn3
 {
     position: absolute;
-    top: 4vh;
+    top: 2vh;
     left: 38%;    
     width: 27%;
     height: 320px;    
@@ -58,7 +72,7 @@
 .maincolumn4
 {
     position: absolute;
-    top: 4vh;
+    top: 2vh;
     left: 66.2%;    
     width: 27%;
     height: 320px;    
@@ -66,12 +80,11 @@
 .topcenter
 { 
     position: absolute;
-    top: 4vh;
+    top: 2vh;
     left: 26%;    
     width: 20%;
     height: 64px;    
 }
-
 body 
 {
     background-image: url('../images/BubbleBackground.png');

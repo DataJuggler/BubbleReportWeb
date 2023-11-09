@@ -538,6 +538,176 @@ namespace BubbleReportWeb.Pages
             }
             #endregion
 
+            #region CreateRowsForSectorGrid()
+            /// <summary>
+            /// returns a list of Rows For Sectors
+            /// </summary>
+            public List<Row> CreateRowsForSectorGrid()
+            {
+                // initial value
+                List<Row> rows = new List<Row>();
+                
+                // Load the Gateway
+                Gateway gateway = new Gateway(Connection.Name);
+                
+                // Load the sectors
+                List<Sector> sectors = gateway.LoadSectors();
+
+                // If the sectors collection exists and has one or more items
+                if (ListHelper.HasOneOrMoreItems(sectors))
+                {
+                    // Create Column and set properties
+                    Column column = new Column();
+                    column.Caption = "Name";
+                    column.ColumnName = "Name";
+                    column.Index = 0;
+                    column.ColumnNumber = 1;                        
+                    column.ColumnText = "Name";
+                    column.Width = 100;
+                    column.Height = 16;                    
+                    column.ClassName = "displayinlineblock width100 colorwhite textalignleft down4 right16 fontsize12";  
+
+                    // Add this column
+                    SectorGrid.Columns.Add(column);
+
+                    // Create Column and set properties
+                    Column column2 = new Column();
+                    column2.Caption = "Adv";
+                    column2.ColumnName = "Adv";
+                    column2.Index = 1;
+                    column2.ColumnNumber = 2;                        
+                    column2.ColumnText = column2.Caption;
+                    column2.Width = 42;
+                    column2.Height = 16;
+                    column2.ClassName = "displayinlineblock width42 colorwhite textalignleft down4 right28 fontsize12";  
+
+                    // Add Column 2 to the header row
+                    SectorGrid.Columns.Add(column2);
+
+                    // Create Column and set properties
+                    Column column3 = new Column();
+                    column3.Caption = "Dec";
+                    column3.ColumnName = "Dec";
+                    column3.Index = 2;
+                    column3.ColumnNumber = 3;                        
+                    column3.ColumnText = column3.Caption;
+                    column3.Width =42;
+                    column3.Height = 16;
+                    column3.ClassName = "displayinlineblock width42 colorwhite textalignleft down4 right34 fontsize12";  
+
+                    // Add this column
+                    SectorGrid.Columns.Add(column3);
+
+                    // Create Column and set properties
+                    Column column4 = new Column();
+                    column4.Caption = "Avg % Gain";
+                    column4.ColumnName = "AveragePercentChange";
+                    column4.Index = 3;
+                    column4.ColumnNumber = 4;                        
+                    column4.ColumnText = column4.Caption;
+                    column4.Width = 74;
+                    column4.Height = 16;
+                    column4.ClassName = "displayinlineblock textdonotwrap width74 colorwhite textalignleft down4 right20 fontsize12";
+
+                    // Add this column
+                    SectorGrid.Columns.Add(column4);
+
+                    // Create Column and set properties
+                    Column column5 = new Column();
+                    column5.Caption = "Streak";
+                    column5.ColumnName = "Streak";
+                    column5.Index = 3;
+                    column5.ColumnNumber = 4;                        
+                    column5.ColumnText = column5.Caption;
+                    column5.Width = 48;
+                    column5.Height = 16;
+                    column5.ClassName = "displayinlineblock width48 colorwhite textalignleft down4 right16 fontsize12";
+
+                    // Add this column
+                    SectorGrid.Columns.Add(column5);
+
+                    // Iterate the collection of sectors objects
+                    foreach (Sector sector in sectors)
+                    {
+                        // Create a row
+                        Row row = new Row();
+                        row.ClassName = "textdonotwrap width448 height16 marginbottom0 down8";
+
+                        // Create Column and set properties
+                        column = new Column();                        
+                        column.ColumnName = "Name";
+                        column.Index = 0;
+                        column.ColumnNumber = 1;                        
+                        column.ColumnText = sector.ShortName;
+                        column.Width = 100;
+                        column.Height = 16;                    
+                        column.ClassName = "displayinlineblock width100 colorwhite textalignleft down4 right16 fontsize12";  
+
+                        // Add this column
+                        row.Columns.Add(column);
+
+                        // Create Column and set properties
+                        column2 = new Column();
+                        column2.ColumnName = "Advancers";
+                        column2.Index = 1;
+                        column2.ColumnNumber = 2;                        
+                        column2.ColumnText = sector.Advancers.ToString();
+                        column2.Width = 42;
+                        column2.Height = 16;
+                        column2.ClassName = "displayinlineblock width42 colorwhite textaligncenter down4 right20 fontsize12";  
+
+                        // Add Column 2 to the header row
+                        row.Columns.Add(column2);
+
+                        // Create Column and set properties
+                        column3 = new Column();
+                        column3.ColumnName = "Decliners";
+                        column3.Index = 2;
+                        column3.ColumnNumber = 3;                        
+                        column3.ColumnText = sector.Decliners.ToString();
+                        column3.Width =42;
+                        column3.Height = 16;
+                        column3.ClassName = "displayinlineblock width42 colorwhite textaligncenter down4 right26 fontsize12";  
+
+                        // Add this column
+                        row.Columns.Add(column3);
+
+                        // Create Column and set properties
+                        column4 = new Column();
+                        column4.ColumnName = "AveragePercentChange";
+                        column4.Index = 3;
+                        column4.ColumnNumber = 4;                        
+                        column4.ColumnText = sector.AveragePercentChange.ToString();
+                        column4.Width = 74;
+                        column4.Height = 16;
+                        column4.ClassName = "displayinlineblock textdonotwrap width74 colorwhite textaligncenter down4 right16 fontsize12";
+
+                        // Add this column
+                        row.Columns.Add(column4);
+
+                        // Create Column and set properties
+                        column5 = new Column();
+                        column5.ColumnName = "Streak";
+                        column5.Index = 3;
+                        column5.ColumnNumber = 4;                        
+                        column5.ColumnText = sector.Streak.ToString();
+                        column5.Width = 48;
+                        column5.Height = 16;
+                        column5.ClassName = "displayinlineblock width48 colorwhite textaligncenter down4 right12 fontsize12";
+
+                        // Add this column
+                        row.Columns.Add(column5);
+
+                        // Add this row
+                        rows.Add(row);
+                    }
+                }
+
+                // return value
+                return rows;
+            }
+            #endregion
+
             #region CreateRowsForTopIndustryStreak()
             /// <summary>
             /// returns a list of Rows For Top Industry Streak
