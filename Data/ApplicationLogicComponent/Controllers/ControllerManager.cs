@@ -36,6 +36,7 @@ namespace ApplicationLogicComponent.Controllers
         private MarketSummaryController marketsummaryController;
         private SectorController sectorController;
         private SectorSummaryController sectorsummaryController;
+        private StockDayController stockdayController;
         private TopLosingStreakStocksController toplosingstreakstocksController;
         private TopStreakStocksController topstreakstocksController;
         #endregion
@@ -75,6 +76,7 @@ namespace ApplicationLogicComponent.Controllers
                 this.MarketSummaryController = new MarketSummaryController(this.ErrorProcessor, this.AppController);
                 this.SectorController = new SectorController(this.ErrorProcessor, this.AppController);
                 this.SectorSummaryController = new SectorSummaryController(this.ErrorProcessor, this.AppController);
+                this.StockDayController = new StockDayController(this.ErrorProcessor, this.AppController);
                 this.TopLosingStreakStocksController = new TopLosingStreakStocksController(this.ErrorProcessor, this.AppController);
                 this.TopStreakStocksController = new TopStreakStocksController(this.ErrorProcessor, this.AppController);
             }
@@ -185,6 +187,14 @@ namespace ApplicationLogicComponent.Controllers
             {
                 get { return sectorsummaryController; }
                 set { sectorsummaryController = value; }
+            }
+            #endregion
+
+            #region StockDayController
+            public StockDayController StockDayController
+            {
+                get { return stockdayController; }
+                set { stockdayController = value; }
             }
             #endregion
 

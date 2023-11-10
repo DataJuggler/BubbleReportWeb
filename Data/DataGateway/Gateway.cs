@@ -233,6 +233,43 @@ namespace DataGateway
             }
             #endregion
         
+            #region DeleteStockDay(int id, StockDay tempStockDay = null)
+            /// <summary>
+            /// This method is used to delete StockDay objects.
+            /// </summary>
+            /// <param name="id">Delete the StockDay with this id</param>
+            /// <param name="tempStockDay">Pass in a tempStockDay to perform a custom delete.</param>
+            public bool DeleteStockDay(int id, StockDay tempStockDay = null)
+            {
+                // initial value
+                bool deleted = false;
+        
+                // if the AppController exists
+                if (this.HasAppController)
+                {
+                    // if the tempStockDay does not exist
+                    if (tempStockDay == null)
+                    {
+                        // create a temp StockDay
+                        tempStockDay = new StockDay();
+                    }
+        
+                    // if the id is set
+                    if (id > 0)
+                    {
+                        // set the primary key
+                        tempStockDay.UpdateIdentity(id);
+                    }
+        
+                    // perform the delete
+                    deleted = this.AppController.ControllerManager.StockDayController.Delete(tempStockDay);
+                }
+        
+                // return value
+                return deleted;
+            }
+            #endregion
+        
             #region ExecuteNonQuery(string procedureName, SqlParameter[] sqlParameters)
             /// <summary>
             /// This method Executes a Non Query StoredProcedure
@@ -461,6 +498,43 @@ namespace DataGateway
 
                 // return value
                 return sector;
+            }
+            #endregion
+
+            #region FindStockDay(int id, StockDay tempStockDay = null)
+            /// <summary>
+            /// This method is used to find 'StockDay' objects.
+            /// </summary>
+            /// <param name="id">Find the StockDay with this id</param>
+            /// <param name="tempStockDay">Pass in a tempStockDay to perform a custom find.</param>
+            public StockDay FindStockDay(int id, StockDay tempStockDay = null)
+            {
+                // initial value
+                StockDay stockDay = null;
+
+                // if the AppController exists
+                if (this.HasAppController)
+                {
+                    // if the tempStockDay does not exist
+                    if (tempStockDay == null)
+                    {
+                        // create a temp StockDay
+                        tempStockDay = new StockDay();
+                    }
+
+                    // if the id is set
+                    if (id > 0)
+                    {
+                        // set the primary key
+                        tempStockDay.UpdateIdentity(id);
+                    }
+
+                    // perform the find
+                    stockDay = this.AppController.ControllerManager.StockDayController.Find(tempStockDay);
+                }
+
+                // return value
+                return stockDay;
             }
             #endregion
 
@@ -755,6 +829,27 @@ namespace DataGateway
             }
             #endregion
 
+            #region LoadStockDays(StockDay tempStockDay = null)
+            /// <summary>
+            /// This method loads a collection of 'StockDay' objects.
+            /// </summary>
+            public List<StockDay> LoadStockDays(StockDay tempStockDay = null)
+            {
+                // initial value
+                List<StockDay> stockDays = null;
+
+                // if the AppController exists
+                if (this.HasAppController)
+                {
+                    // perform the load
+                    stockDays = this.AppController.ControllerManager.StockDayController.FetchAll(tempStockDay);
+                }
+
+                // return value
+                return stockDays;
+            }
+            #endregion
+
             #region LoadTopLosingStreakStocks(TopLosingStreakStocks tempTopLosingStreakStocks = null)
             /// <summary>
             /// This method loads a collection of 'TopLosingStreakStocks' objects.
@@ -900,6 +995,28 @@ namespace DataGateway
                 {
                     // perform the save
                     saved = this.AppController.ControllerManager.SectorController.Save(ref sector);
+                }
+
+                // return value
+                return saved;
+            }
+            #endregion
+
+            #region SaveStockDay(ref StockDay stockDay)
+            /// <summary>
+            /// This method is used to save 'StockDay' objects.
+            /// </summary>
+            /// <param name="stockDay">The StockDay to save.</param>
+            public bool SaveStockDay(ref StockDay stockDay)
+            {
+                // initial value
+                bool saved = false;
+
+                // if the AppController exists
+                if (this.HasAppController)
+                {
+                    // perform the save
+                    saved = this.AppController.ControllerManager.StockDayController.Save(ref stockDay);
                 }
 
                 // return value

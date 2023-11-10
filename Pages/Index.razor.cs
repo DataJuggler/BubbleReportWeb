@@ -35,7 +35,9 @@ namespace BubbleReportWeb.Pages
         private Grid marketSummaryGrid;
         private Grid topIndustryStreakGrid;
         private Grid losingIndustryGrid;
-        private Grid sectorGrid;      
+        private Grid sectorGrid;
+        private Label lastMarketDateComponent;
+        private string lastMarketDate;
         #endregion
 
         #region Events
@@ -124,6 +126,29 @@ namespace BubbleReportWeb.Pages
 
                     // Refresh the Grid
                     SectorGrid.Refresh();
+                }
+                
+                // if the value for HasLastMarketDateComponent is true
+                if (HasLastMarketDateComponent)
+                {
+                    // Create a new instance of a 'Gateway' object.
+                    Gateway gateway = new Gateway(Connection.Name);
+                    
+                    // load the lastStockDate
+                    StockDay lastStockDate = gateway.LoadStockDays().LastOrDefault();
+
+                    // If the lastStockDate object exists
+                    if (NullHelper.Exists(lastStockDate))
+                    {
+                        // Set the LastMarketDate
+                        LastMarketDate = lastStockDate.Date.ToShortDateString();
+
+                        // Set the text
+                        LastMarketDateComponent.SetTextValue(LastMarketDate);
+
+                        // Update the UI
+                        LastMarketDateComponent.Refresh();
+                    }
                 }
 
                 // call the base
@@ -1070,7 +1095,7 @@ namespace BubbleReportWeb.Pages
             {
                 // If the component object exists
                 if (NullHelper.Exists(component))
-                {      
+                {  
                     // TopStreakGrid = component as Grid;                    
                     if (TextHelper.IsEqual(component.Name, "TopStreaksStockGrid"))
                     {
@@ -1102,7 +1127,12 @@ namespace BubbleReportWeb.Pages
                     {
                         // store the grid
                         SectorGrid = component as Grid;
-                    }   
+                    }                    
+                    else if(TextHelper.IsEqual(component.Name, "LastMarketDateComponent"))
+                    {
+                        // store the LastMarketDateComponent
+                        LastMarketDateComponent = component as Label;
+                    }                    
                 }
             }
             #endregion
@@ -1116,6 +1146,23 @@ namespace BubbleReportWeb.Pages
             /// This property gets or sets the value for Children.
             /// </summary>
             public List<IBlazorComponent> Children { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+            #endregion
+            
+            #region HasLastMarketDateComponent
+            /// <summary>
+            /// This property returns true if this object has a 'LastMarketDateComponent'.
+            /// </summary>
+            public bool HasLastMarketDateComponent
+            {
+                get
+                {
+                    // initial value
+                    bool hasLastMarketDateComponent = (this.LastMarketDateComponent != null);
+                    
+                    // return value
+                    return hasLastMarketDateComponent;
+                }
+            }
             #endregion
             
             #region HasLosingIndustryGrid
@@ -1217,6 +1264,28 @@ namespace BubbleReportWeb.Pages
                     // return value
                     return hasTopStreakGrid;
                 }
+            }
+            #endregion
+            
+            #region LastMarketDate
+            /// <summary>
+            /// This property gets or sets the value for 'LastMarketDate'.
+            /// </summary>
+            public string LastMarketDate
+            {
+                get { return lastMarketDate; }
+                set { lastMarketDate = value; }
+            }
+            #endregion
+            
+            #region LastMarketDateComponent
+            /// <summary>
+            /// This property gets or sets the value for 'LastMarketDateComponent'.
+            /// </summary>
+            public Label LastMarketDateComponent
+            {
+                get { return lastMarketDateComponent; }
+                set { lastMarketDateComponent = value; }
             }
             #endregion
             

@@ -54,6 +54,15 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;    
     line-height: 1vh;   
 }
+.lastmarketdate
+{
+    position: relative;
+    width: 11vw;
+    height: 8vh;
+    left: 0vw;
+    text-align: center;
+    background: none;
+}
 .maincolumn1
 {
     position: absolute;

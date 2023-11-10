@@ -40,6 +40,7 @@ namespace ApplicationLogicComponent.DataOperations
         private MarketSummaryMethods marketsummaryMethods;
         private SectorMethods sectorMethods;
         private SectorSummaryMethods sectorsummaryMethods;
+        private StockDayMethods stockdayMethods;
         private TopLosingStreakStocksMethods toplosingstreakstocksMethods;
         private TopStreakStocksMethods topstreakstocksMethods;
         #endregion
@@ -79,6 +80,7 @@ namespace ApplicationLogicComponent.DataOperations
                 this.MarketSummaryMethods = new MarketSummaryMethods(this.DataManager);
                 this.SectorMethods = new SectorMethods(this.DataManager);
                 this.SectorSummaryMethods = new SectorSummaryMethods(this.DataManager);
+                this.StockDayMethods = new StockDayMethods(this.DataManager);
                 this.TopLosingStreakStocksMethods = new TopLosingStreakStocksMethods(this.DataManager);
                 this.TopStreakStocksMethods = new TopStreakStocksMethods(this.DataManager);
             }
@@ -189,6 +191,14 @@ namespace ApplicationLogicComponent.DataOperations
             {
                 get { return sectorsummaryMethods; }
                 set { sectorsummaryMethods = value; }
+            }
+            #endregion
+
+            #region StockDayMethods
+            public StockDayMethods StockDayMethods
+            {
+                get { return stockdayMethods; }
+                set { stockdayMethods = value; }
             }
             #endregion
 
