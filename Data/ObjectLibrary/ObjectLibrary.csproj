@@ -3,7 +3,7 @@
   <PropertyGroup>
 	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <PackageId>DataJuggler.DataTier.Net7.ObjectLibrary</PackageId>
     <Version>7.1.1</Version>
     <Authors>DataJuggler</Authors>
@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DataJuggler.Net7" Version="7.3.1" />
+    <PackageReference Include="DataJuggler.Net8" Version="8.0.0" />
   </ItemGroup>
   
 </Project>
