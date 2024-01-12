@@ -576,7 +576,7 @@ namespace BubbleReportWeb.Pages
                 Gateway gateway = new Gateway(Connection.Name);
                 
                 // Load the sectors
-                List<Sector> sectors = gateway.LoadSectors();
+                List<Sector> sectors = gateway.LoadSectors().OrderByDescending(x => x.Streak).ThenBy(x => x.Name).ToList();
 
                 // If the sectors collection exists and has one or more items
                 if (ListHelper.HasOneOrMoreItems(sectors))
